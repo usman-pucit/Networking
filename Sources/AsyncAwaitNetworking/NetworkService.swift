@@ -7,11 +7,12 @@
 
 import Foundation
 
-protocol NetworkServiceProvider {
-    @available(iOS 13.0.0, *)
+@available(iOS 15.0.0, *)
+public protocol NetworkServiceProvider {
     func execute<T: Decodable>(request: Request) async throws -> T
 }
 
+@available(iOS 15.0, *)
 public class NetworkingService {
     // MARK: - Type
 
@@ -32,8 +33,7 @@ public class NetworkingService {
         session.invalidateAndCancel()
     }
 
-    @available(iOS 13.0.0, *)
-    func execute<T: Decodable>(request: Request) async throws -> T {
+    public func execute<T: Decodable>(request: Request) async throws -> T {
         let (data, response) = try await session.data(for: request.urlRequest())
 
         guard let httpResponse = response as? HTTPURLResponse else {

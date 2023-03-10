@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol RequestProvider {
+public protocol RequestProvider {
     func urlRequest() throws -> URLRequest
 }
 
