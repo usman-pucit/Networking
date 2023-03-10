@@ -43,7 +43,7 @@ public struct Request {
 }
 
 extension Request: RequestProvider {
-    func urlRequest() throws -> URLRequest {
+    public func urlRequest() throws -> URLRequest {
         var components = URLComponents()
         components.scheme = scheme
         components.host = baseURL

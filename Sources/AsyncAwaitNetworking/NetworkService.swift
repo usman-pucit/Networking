@@ -14,25 +14,26 @@ public protocol NetworkServiceProvider {
 
 @available(iOS 15.0, *)
 public class NetworkingService {
-    // MARK: - Type
+    private let session: URLSession
+    
+    init(session: URLSession = .shared) {
+        self.session = session
+    }
+    
+    // MARK: - Public API
+    
+    deinit {
+        session.invalidateAndCancel()
+    }
+}
 
+@available(iOS 15.0, *)
+extension NetworkingService: NetworkServiceProvider {
     enum NetworkServiceError: Error {
         case invalidResponse
         case unacceptableStatusCode(Int)
     }
-
-    private let session: URLSession
-
-    init(session: URLSession = .shared) {
-        self.session = session
-    }
-
-    // MARK: - Public API
-
-    deinit {
-        session.invalidateAndCancel()
-    }
-
+    
     public func execute<T: Decodable>(request: Request) async throws -> T {
         let (data, response) = try await session.data(for: request.urlRequest())
 
