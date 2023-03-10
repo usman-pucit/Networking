@@ -16,7 +16,7 @@ public protocol NetworkServiceProvider {
 public class NetworkingService {
     private let session: URLSession
     
-    init(session: URLSession = .shared) {
+    public init(session: URLSession = .shared) {
         self.session = session
     }
     
