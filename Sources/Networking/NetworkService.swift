@@ -13,7 +13,7 @@ public protocol NetworkServiceProvider {
 }
 
 @available(iOS 15.0, *)
-public class NetworkingService {
+public class NetworkService {
     private let session: URLSession
     
     public init(session: URLSession = .shared) {
@@ -28,7 +28,7 @@ public class NetworkingService {
 }
 
 @available(iOS 15.0, *)
-extension NetworkingService: NetworkServiceProvider {
+extension NetworkService: NetworkServiceProvider {
     enum NetworkServiceError: Error {
         case invalidResponse
         case unacceptableStatusCode(Int)

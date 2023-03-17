@@ -1,4 +1,4 @@
-# AsyncAwaitNetworking
+# Networking
 
 A tiny networking package with URLSession and Async await 
 
