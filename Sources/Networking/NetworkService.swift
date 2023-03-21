@@ -29,7 +29,7 @@ public class NetworkService {
 
 @available(iOS 15.0, *)
 extension NetworkService: NetworkServiceProvider {
-    enum NetworkServiceError: Error {
+    public enum NetworkServiceError: Error {
         case invalidResponse
         case unacceptableStatusCode(Int)
     }
