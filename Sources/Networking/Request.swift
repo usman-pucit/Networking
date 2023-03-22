@@ -7,10 +7,6 @@
 
 import Foundation
 
-public protocol RequestProvider {
-    func urlRequest() throws -> URLRequest
-}
-
 public struct Request {
     public enum HttpMethod: String {
         case get = "GET"
@@ -40,9 +36,7 @@ public struct Request {
         self.queryItems = queryItems
         self.decoder = decoder
     }
-}
-
-extension Request: RequestProvider {
+    
     public func urlRequest() throws -> URLRequest {
         var components = URLComponents()
         components.scheme = scheme
