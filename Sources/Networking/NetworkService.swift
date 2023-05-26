@@ -19,12 +19,6 @@ public class NetworkService {
     public init(session: URLSession = .shared) {
         self.session = session
     }
-    
-    // MARK: - Public API
-    
-    deinit {
-        session.invalidateAndCancel()
-    }
 }
 
 @available(iOS 15.0, *)
